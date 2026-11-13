@@ -1,0 +1,22 @@
+{
+  "name": "ivan-k/thumb3x",
+  "description": "Компонент для обработки изображений в MODX 3.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ivan K.",
+      "email": "ivan@ivan345.com",
+      "homepage": "https://github.com/Ivan345com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "league/glide": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Thumb3x\\": "src/",
+      "Thumb3x\\Model\\": "src/Model/"
+    }
+  }
+}

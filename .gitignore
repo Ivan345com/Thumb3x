@@ -1,0 +1,19 @@
+# Built packages
+*.transport.zip
+/core/packages/
+
+# Thumbnail cache
+/assets/components/thumb3x/cache/
+
+# AI assistant instructions
+AGENTS.md
+CLAUDE.md
+.claude/
+.cursor/
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

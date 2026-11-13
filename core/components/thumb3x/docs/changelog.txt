@@ -1,0 +1,100 @@
+Changelog for Thumb3x.
+
+3.1.5-pl
+==============
+
+- 1) License changed to MIT
+
+- 1) Лицензия изменена на MIT
+
+3.1.4-pl
+==============
+
+- 1) On any error the snippet returns an empty string instead of an error text; the reason is written to the MODX error log (missing file and wrong type - at WARN level)
+- 2) The output format (fm, &format) accepts only image formats; anything else is replaced with jpg
+
+- 1) При любой ошибке сниппет возвращает пустую строку вместо текста ошибки; причина пишется в журнал ошибок MODX (нет файла и неверный тип - на уровне WARN)
+- 2) Формат (fm, &format) принимает только графические форматы; любой другой заменяется на jpg
+
+3.1.3-pl
+==============
+
+- 1) Images from additional media sources no longer get mixed up when files have the same relative path; the main source (thumb3x.source_id) is unchanged
+
+- 1) Картинки дополнительных медиаисточников больше не путаются при одинаковых относительных путях; основной источник (thumb3x.source_id) без изменений
+
+3.1.2-pl
+==============
+
+- 1) Clearing the cache checks the thumb3x.cache_path folder first and refuses unsafe paths; an empty value now means the default folder
+- 2) If a cached file is missing, the image is generated again instead of returning a broken link
+- 3) Clearing the cache and removing records now require the empty_cache permission
+- 4) Development-only resolver removed from the package
+- 5) The last-access date is written at most once a day instead of on every image view
+- 6) Correct thumbnail URLs on sites installed in a subfolder
+- 7) Clearing the cache of a single media source now deletes its files; removing records checks all of them first
+- 8) Manager table output is escaped; missing lexicon entries added; clearer error log messages; empty or invalid permission settings fall back to 0644/0755
+- 9) No more duplicate-entry errors in the error log when the same new image is requested by several visitors at once
+- 10) Fixed update failing with "fread(): Argument #2 ($length) must be greater than 0" on servers where MODX uses PclZip
+
+- 1) Очистка кэша сначала проверяет папку thumb3x.cache_path и отказывается работать с небезопасным путём; пустое значение теперь означает папку по умолчанию
+- 2) Если файла в кэше нет, картинка создаётся заново вместо битой ссылки
+- 3) Для очистки кэша и удаления записей нужно право empty_cache
+- 4) Из пакета убран резолвер, нужный только при разработке
+- 5) Дата последнего показа записывается не чаще раза в сутки, а не при каждом показе картинки
+- 6) Правильные адреса картинок на сайтах в подпапке
+- 7) Очистка кэша одного медиаисточника теперь удаляет его файлы; удаление записей сначала проверяет их все
+- 8) Экранирование вывода в таблице менеджера; добавлены недостающие тексты лексикона; понятные сообщения в журнале ошибок; пустые или неверные настройки прав заменяются на 0644/0755
+- 9) Одновременные первые запросы одной картинки больше не засоряют журнал ошибок записями о дубликатах
+- 10) Исправлена ошибка обновления "fread(): Argument #2 ($length) must be greater than 0" на серверах, где MODX использует PclZip
+
+3.1.1-pl
+==============
+
+- 1) assets/css/index.html, assets/js/index.html - placeholders are no longer empty (PclZip on PHP 8 failed with "fread(): Argument #2 ($length) must be greater than 0")
+
+3.1.0-pl
+==============
+
+- 1) New thumb3x.cache_path_mode setting - cache path scheme: source (default, behaviour unchanged), hashed, flat
+- 2) Thumb3xHandler.php - in hashed/flat mode the source path never appears in the cache URL, file name = hash column
+- 3) Remove.php - removing a record now cleans emptied folders up the tree to the cache root
+- 5) Updated libraries: glide 3.0.1 -> 3.2.0, intervention/image 3.11.3 -> 3.11.8, intervention/gif 4.2.2 -> 4.2.4, flysystem (+local) 3.30.0 -> 3.35.3, mime-type-detection 1.16.0 -> 1.17.0
+
+3.0.6-pl
+==============
+- 1) Implementation of thumb3x.cache_path setting
+
+Thumb3xHandler.php - replaced hardcoded cache paths with system setting usage
+Truncate.php - cache path is now retrieved from settings
+
+- 2) Media Source tracking for cache deletion
+
+thumb3x.mysql.schema.xml - added source_id field and index
+Thumb3xHandler.php - source_id is now saved when creating cache records
+Truncate.php - added ability to clear cache for specific media source (optional source_id parameter)
+
+-3) Localization improvements
+en/ - fixed errors in English localization
+es/ - created complete Spanish localization
+de/ - created complete German localization
+
+3.0.5-pl
+==============
+- Fixed bugs
+
+3.0.4-pl
+==============
+- Fixed bugs
+
+3.0.1-pl
+==============
+- Fixed bugs
+
+3.0.1-pl
+==============
+- Fixed bugs
+
+3.0.0-pl
+==============
+- The first release

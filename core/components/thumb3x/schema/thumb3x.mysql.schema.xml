@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="Thumb3x\Model" baseClass="xPDO\Om\xPDOObject" platform="mysql" defaultEngine="InnoDB" version="3.0">
+
+    <object class="Thumb3xFile" table="thumb3x_files" extends="xPDO\Om\xPDOSimpleObject">
+
+        <field key="hash" dbtype="varchar" precision="40" phptype="string" null="false" default="" comment="SHA1 хэш от пути к файлу и параметров"/>
+        <field key="source_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="1" comment="ID источника файлов (Media Source)"/>
+        <field key="source_path" dbtype="text" phptype="string" null="false" comment="Оригинальный путь к файлу"/>
+        <field key="cache_path" dbtype="text" phptype="string" null="false" comment="Путь к сгенерированному файлу"/>
+        <field key="params" dbtype="text" phptype="json" null="true" comment="Параметры обработки в формате JSON"/>
+        <field key="cache_filesize" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" comment="Размер файла в байтах"/>
+        <field key="cache_width" dbtype="smallint" precision="5" phptype="integer" attributes="unsigned" null="false" default="0" comment="Ширина сгенерированного изображения"/>
+        <field key="cache_height" dbtype="smallint" precision="5" phptype="integer" attributes="unsigned" null="false" default="0" comment="Высота сгенерированного изображения"/>
+        <field key="error_message" dbtype="text" phptype="string" null="true" comment="Сообщение об ошибке, если генерация не удалась"/>
+        <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
+        <field key="accessedon" dbtype="datetime" phptype="datetime" null="true" comment="Время последнего доступа к файлу"/>
+
+        <index alias="hash" name="hash" primary="false" unique="true" type="BTREE">
+            <column key="hash" length="" collation="A" null="false"/>
+        </index>
+        <index alias="source_id" name="source_id" primary="false" unique="false" type="BTREE">
+            <column key="source_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="accessedon" name="accessedon" primary="false" unique="false" type="BTREE">
+            <column key="accessedon" length="" collation="A" null="false"/>
+        </index>
+
+    </object>
+
+</model>
